@@ -1,0 +1,30 @@
+SET SERVEROUTPUT ON
+CREATE OR REPLACE TRIGGER try2
+before insert or update ON course 
+REFERENCING OLD AS o NEW AS n
+FOR EACH ROW
+Declare
+var1 varchar(40);
+BEGIN
+if :n.dept_id=5
+then
+var1:='ME';
+CONCAT(var1,'1201');
+Else if :n.dept_id=1
+var1:='CE';
+CONCAT(var1,'1201');
+else if :n.dept_id=7
+
+var1:='CSE';
+CONCAT(var1,'1201');
+Else if :n.dept_id=3
+
+var1:='EEE';
+CONCAT(var1,'1201');
+else if :n.dept_id=2
+
+var1:='ECE';
+CONCAT(var1,'1201');
+end if;
+END;
+/
