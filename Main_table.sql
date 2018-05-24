@@ -57,7 +57,7 @@ insert into relation(book_no,course_no)values(12,'CSE1101');
 insert into relation(book_no,course_no)values(16,'EEE1101');
 insert into relation(book_no,course_no)values(15,'ME3101');
 insert into relation(book_no,course_no)values(13,'CSE3105');
-insert into relation(book_no,course_no)values(16,'ME3101');
+--insert into relation(book_no,course_no)values(16,'ME3101');
 select * from book;
 select * from relation;
      
