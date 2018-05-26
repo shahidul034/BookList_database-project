@@ -41,11 +41,11 @@ DBMS_OUTPUT.PUT_LINE(A_NAME(counter2)); -- array print
    END LOOP;
 proc1('CSE1101');   
 proc2(15,new_course_name); 
+proc3(7);
 value:=fun(7);
 DBMS_OUTPUT.PUT_LINE('function value: ' || value);
 
-  
-
+ 
 end;
 /
 
