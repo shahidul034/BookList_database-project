@@ -211,5 +211,77 @@ end loop;
 close cur_dept;
 end;
 /
+```
+## Command for FILE:
+```
+SQL*Plus: Release 11.2.0.2.0 Production on Thu May 3 11:12:12 2018
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+SQL> connect system
+Enter password:
+Connected.
+SQL> conn sys/sys as sysdba;
+Connected.
+SQL> grant execute on UTL_FILE to public;
+Grant succeeded.
+SQL> create or replace directory CSE as 'C:\Users\ASUS\Desktop\TOAD';
+Directory created.
+SQL> grant read,write on directory CSE to public;
+Grant succeeded.
+SQL>
+
+```
+## File_read(course):
+```
+set serveroutput on
+declare 
+f utl_file.file_type;
+line varchar(1000);
+course_no course.course_no%type;
+course_name  course.course_name%type;
+year_semister  course.year_semister%type;
+credit  course.credit%type;
+dept_id  course.dept_id%type;
+begin
+  f:=utl_file.fopen('CSE','COURSE.CSV','R');                                                                                                                                                                                                                                                                                                     
+  if utl_file.is_open(f) then
+  utl_file.get_line(f,line,1000);
+  loop begin
+  utl_file.get_line(f,line,1000);
+  if line is null then exit;
+  end if;
+  course_no:=regexp_substr(line,'[^,]+',1,1);
+  course_name:=regexp_substr(line,'[^,]+',1,2);
+  year_semister:=regexp_substr(line,'[^,]+',1,3);
+  credit:=regexp_substr(line,'[^,]+',1,4);
+  dept_id:=regexp_substr(line,'[^,]+',1,5);
+  insert into course values(course_no,course_name,year_semister,credit,dept_id);
+  commit;
+  exception
+  when no_data_found then exit;
+  end;
+  end loop;
+  end if;
+  utl_file.fclose(f); 
+  end;
+  /
+```
+## File_Write(course):
+```
+set serveroutput on
+declare 
+f utl_file.file_type;
+cursor c is select * from DEPT;
+begin
+f:=utl_file.fopen('CSE','NEW_DEPT.csv','W');
+utl_file.put(f,'dept_id' ||','||'dept_name' ||','||'faculty'||','||'no_of_student');
+utl_file.new_line(f);
+    for c_record in c
+    loop
+    utl_file.put(f,c_record.dept_id ||','||c_record.dept_name ||','||c_record.faculty||','||c_record.no_of_student);
+    utl_file.new_line(f);
+    end loop;
+ utl_file.fclose(f);
+ end;
+ /
 
 ```
