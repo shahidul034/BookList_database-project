@@ -9,7 +9,10 @@
 ![alt text](https://github.com/shahidul034/database-project/blob/master/DIAGRAM%20PIC/sqlplus.png)
 
 4) You can create a new user because we use the system(administrator) as a user. Then, we will give the new user all privileges to perform all SQL tasks. Follow the figure.
-
+```
+create user shakib034 identified by shakib034;
+grant all privileges to shakib034;
+```
 ![alt text](https://github.com/shahidul034/database-project/blob/master/DIAGRAM%20PIC/sqlplus2.png)
 # database-project
 ![alt text](https://github.com/shahidul034/database-project/blob/master/DIAGRAM%20PIC/pic1.png)
