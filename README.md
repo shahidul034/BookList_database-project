@@ -56,6 +56,10 @@ primary key(book_no,course_no),
 foreign key (book_no) references book(book_no),
 foreign key (course_no) references course(course_no) 
 );
+
+```
+## Insert the data in the table
+```
 insert into dept(dept_id,dept_name,faculty,no_of_student)values(7,'CSE','EE',120);
 insert into dept(dept_id,dept_name,faculty,no_of_student)values(3,'EEE','EE',120);
 insert into dept(dept_id,dept_name,faculty,no_of_student)values(1,'CE','CE',120);
@@ -79,7 +83,10 @@ insert into relation(book_no,course_no)values(12,'CSE1101');
 insert into relation(book_no,course_no)values(16,'EEE1101');
 insert into relation(book_no,course_no)values(15,'ME3101');
 insert into relation(book_no,course_no)values(13,'CSE3105');
+
 ```
+
+
 ## SQL Query:
 ### ------DDL-------
 ```
